@@ -29,7 +29,7 @@
                                                 <label for="siswa_id">Nama Santri*</label>
                                                 <select class="form-control select2bs4" style="width: 100%;" id="siswa_id" name="siswa_id">
                                                   @foreach ($siswa as $item )
-                                                    <option value="{{ $item->id }}" {{ ($item->id === $data->siswa_id) ? 'selected' : '' }}>{{ $item->nama }}</option>
+                                                    <option value="{{ $item->id }}" {{ ($item->id == $data->siswa_id) ? 'selected' : '' }}>{{ $item->nama }}</option>
                                                   @endforeach
                                                 </select>
                                                 @error('siswa_id')
