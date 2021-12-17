@@ -42,6 +42,7 @@
                             <thead>
                                 <tr>
                                   <th>No</th>
+                                  <th>Kampus</th>
                                   <th>Nama</th>
                                   <th>Keperluan</th>
                                   <th>Tanggal Izin</th>
@@ -54,6 +55,7 @@
                             <tbody>
                              <tr>
                               <td>{{ $loop->iteration }}</td>
+                              <td>{{ $item->siswa->kampus }}</td>
                               <td>{{ $item->siswa->nama }}</td>
                               <td>{{ $item->keperluan }}</td>
                               <td>{{ date('d F Y', strtotime($item->created_at)) }}</td>
@@ -61,44 +63,48 @@
 
                               <td align="center">
                                 @if ($item->status == 0)
-                                    <span class="badge badge-danger text-white">Not Verify</span>
+                                    <span class="badge badge-pill badge-danger text-white">Not Verify</span>
                                 @elseif ($item->status == 1)
-                                    <span class="badge badge-warning " >Verify - 
-                                      @if ( date(('Y-m-d')) > $item->tgl_kembali) 
-                                        <span class="text-danger">Terlambat</span>
-                                      @else
+                                @if ( date(('Y-m-d')) > $item->tgl_kembali) 
+                                <span class="badge badge-pill badge-warning " >Verify - 
+                                  <span class="text-danger">Terlambat</span>
+                                </span>
+                                <br>
+                                <a target="blank" href ="https://api.whatsapp.com/send?phone={{$item->siswa->nohp}}&text=Assalamualaikum%20%0A%0AKami%20dari%20ponpes%20Askhabul%20Kahfi%20menginformasikan%20bahwa%20putra%20%2F%20putri%20bapak%20%2F%20ibu%20atas%20nama%20*{{$item->siswa->nama}}*%20%2C%20telah%20terlambat%20kembali%20ke%20pondok%20pesantren%20%2C%20mohon%20kepada%20bapak%20%2F%20ibu%20wali%20santri%20untuk%20bisa%20mengantarkan%20putra%20%2F%20putri%20nya%20ke%20pesantren%20demi%20mentaati%20peraturan%20pondok%20pesantren%20Askhabul%20Kahfi%20%2C%20jika%20terlambat%20datang%20ke%20pesantren%20maka%20akan%20di%20kenai%20sanksi%20kecuali%20ada%20konfirmasi%20perpanjangan%20izin%20%2C%20yg%20bisa%20di%20kirimkan%20ke%20nomor%20kantor%20kampus%20masing2%20terima%20kasih%20%0A%0AWassalamualaikum" class="badge badge-pill badge-success" >Kirim WA</a>
+                                  @else
+                                  <span class="badge badge-pill badge-warning " >Verify - 
                                         Masa Izin
+                                      </span>
                                       @endif
-                                    </span>
                                 @else
-                                    <span class="badge badge-success">Sudah Kembali</span>
+                                    <span class="badge badge-pill badge-success">Sudah Kembali</span>
                                 @endif
                               </td>
 
                               <td align="center">
 
-                                <a href="{{url('/perizinan')}}/{{ $item->id }}" class="badge badge-secondary">
+                                <a href="{{url('/perizinan')}}/{{ $item->id }}" class="badge badge-pill badge-secondary">
                                   View
                                 </a>
 
                                 {{-- filtering status  --}}
                                   @if ($item->status == 0)
-                                      <a href="{{url('/perizinan')}}/{{ $item->id }}/{{('print_request')}}" target="blank" class="badge badge-success">
+                                      <a href="{{url('/perizinan')}}/{{ $item->id }}/{{('print_request')}}" target="blank" class="badge badge-pill badge-success">
                                         Surat Pengantar
                                       </a>
                                       <form method="POST" action="{{url('/perizinan')}}/{{ $item->id }}/{{('verify')}}">
                                         @csrf
-                                        <button type="submit"  class="badge badge-warning border-0">
+                                        <button type="submit"  class="badge badge-pill badge-warning border-0">
                                           Verify
                                         </button>
                                       </form>
                                   @elseif ($item->status == 1)
-                                      <a href="{{url('/perizinan')}}/{{ $item->id }}/{{('surat_izin')}}" target="blank" class="badge badge-warning">
+                                      <a href="{{url('/perizinan')}}/{{ $item->id }}/{{('surat_izin')}}" target="blank" class="badge badge-pill badge-warning">
                                         Surat Izin
                                       </a>
                                       <form action="{{url('/perizinan')}}/{{ $item->id }}/{{('kembali')}}" method="post">
                                         @csrf
-                                        <button class="badge badge-success border-0">
+                                        <button class="badge badge-success badge-pill border-0">
                                           Kembali
                                         </button>
                                       </form>
@@ -108,7 +114,7 @@
                                 <form action="{{url('/perizinan')}}/{{ $item->id }}" method="post">
                                   @method('delete')
                                   @csrf
-                                  <button type="submit" class="badge badge-danger border-0" onclick=" return confirm('Apakah yakin ingin menghapus data ini ?')">
+                                  <button type="submit" class="badge badge-danger badge-pill border-0" onclick=" return confirm('Apakah yakin ingin menghapus data ini ?')">
                                     Delete
                                   </button>
                                 </form>

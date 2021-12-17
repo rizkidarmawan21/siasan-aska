@@ -490,6 +490,8 @@ Route::get('/sanksi/{id}/delete', [SanksiController::class, 'delete']);
 
 // ============================ Perizinan ==============================================
 
+Route::get('/perizinan/allMasaIzin',[PerizinanController::class,'allMasaIzin'])->middleware('auth');
+Route::get('/perizinan/allKembali',[PerizinanController::class,'allKembali'])->middleware('auth');
 Route::resource('perizinan', PerizinanController::class)->middleware('auth')->except('create');
 
 Route::post('perizinan/{perizinan}/verify', [PerizinanController::class,'verify'])->middleware('auth')->name('verify');
@@ -498,8 +500,6 @@ Route::post('perizinan/{perizinan}/kembali', [PerizinanController::class,'kembal
 Route::get('perizinan/{perizinan}/print_request',[PerizinanController::class,'printRequest'])->middleware('auth');
 Route::get('perizinan/{perizinan}/surat_izin',[PerizinanController::class,'printIzin'])->middleware('auth');
 
-Route::get('perizinan/allMasaIzin',[PerizinanController::class,'allMasaIzin'])->middleware('auth');
-Route::get('perizinan/allKembali',[PerizinanController::class,'allKembali'])->middleware('auth');
 
 /////////////// seragam //////////////////////////////////////////
 // Route::get('/seragam', [SeragamController::class, 'seragam']);
