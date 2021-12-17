@@ -77,28 +77,28 @@
 
                               <td align="center">
 
-                                <a href="{{url('/perizinan')}}/{{ $item->id }}" class="btn btn-secondary btn-sm">
+                                <a href="{{url('/perizinan')}}/{{ $item->id }}" class="badge badge-secondary">
                                   View
                                 </a>
 
                                 {{-- filtering status  --}}
                                   @if ($item->status == 0)
-                                      <a href="{{url('/perizinan')}}/{{ $item->id }}/{{('print_request')}}" target="blank" class="btn btn-success btn-sm">
+                                      <a href="{{url('/perizinan')}}/{{ $item->id }}/{{('print_request')}}" target="blank" class="badge badge-success">
                                         Surat Pengantar
                                       </a>
                                       <form method="POST" action="{{url('/perizinan')}}/{{ $item->id }}/{{('verify')}}">
                                         @csrf
-                                        <button type="submit"  class="btn btn-warning btn-sm">
+                                        <button type="submit"  class="badge badge-warning border-0">
                                           Verify
                                         </button>
                                       </form>
                                   @elseif ($item->status == 1)
-                                      <a href="{{url('/perizinan')}}/{{ $item->id }}/{{('surat_izin')}}" target="blank" class="btn btn-warning btn-sm">
+                                      <a href="{{url('/perizinan')}}/{{ $item->id }}/{{('surat_izin')}}" target="blank" class="badge badge-warning">
                                         Surat Izin
                                       </a>
                                       <form action="{{url('/perizinan')}}/{{ $item->id }}/{{('kembali')}}" method="post">
                                         @csrf
-                                        <button class="btn btn-success btn-sm">
+                                        <button class="badge badge-success border-0">
                                           Kembali
                                         </button>
                                       </form>
@@ -108,7 +108,7 @@
                                 <form action="{{url('/perizinan')}}/{{ $item->id }}" method="post">
                                   @method('delete')
                                   @csrf
-                                  <button type="submit" class="btn btn-danger btn-sm border-0" onclick=" return confirm('Apakah yakin ingin menghapus data ini ?')">
+                                  <button type="submit" class="badge badge-danger border-0" onclick=" return confirm('Apakah yakin ingin menghapus data ini ?')">
                                     Delete
                                   </button>
                                 </form>
