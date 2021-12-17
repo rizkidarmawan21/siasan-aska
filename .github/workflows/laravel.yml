@@ -19,8 +19,12 @@ jobs:
         fetch-depth: 2
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-    - name: Move jajal
-      run: mv jajal.txt public/
+    - name: Move public
+      run: mv public/* .
+    - name: Remove index.php
+      run: rm index.php
+    - name: Rename index-sample.php to index.php
+      run: mv index-sample.php to index.php
     - name: Install Dependencies
       run: composer install --no-interaction --prefer-dist --optimize-autoloader
     - name: Generate key
