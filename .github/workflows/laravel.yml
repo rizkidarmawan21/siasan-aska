@@ -19,6 +19,8 @@ jobs:
         fetch-depth: 2
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: Copy public index.php
+      run: php -r "file_exists('index.php') || copy('index-semple.php', 'index.php');"
     - name: Install Dependencies
       run: composer install --no-interaction --prefer-dist --optimize-autoloader
     - name: Generate key
