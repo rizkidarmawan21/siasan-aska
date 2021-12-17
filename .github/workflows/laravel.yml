@@ -22,7 +22,7 @@ jobs:
     - name: Move public
       run: mv public/* .
     - name: Remove index.php
-      run: mv index.php index-sample.php
+      run: rm index.php
     - name: Rename index-sample.php to index.php
       run: mv index-sample.php index.php
     - name: Install Dependencies
