@@ -239,6 +239,16 @@
       </a>
     </li>
   </ul>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="{{url('/absensi')}}" target="blank" class="nav-link">
+        <i class="far fa-circle text-secondary nav-icon"></i>
+        <p>
+          Absensi Muhasabah Online
+        </p>
+      </a>
+    </li>
+  </ul>
 </li>
 
 <!-- _______________________________________________________________________________ -->

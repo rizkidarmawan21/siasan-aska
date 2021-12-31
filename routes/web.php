@@ -524,3 +524,10 @@ Route::get('/total_uangkampus2', [RankingController::class, 'total_uangkampus2']
 Route::get('/total_uangkampus3', [RankingController::class, 'total_uangkampus3']);
 Route::get('/total_uangkampus4', [RankingController::class, 'total_uangkampus4']);
 
+Route::get('/absen-muhasabah', function () {
+    return view('absensi.frond') ;
+});
+
+
+Route::resource('/absensi', AbsenController::class)->middleware('auth')->except('store');
+Route::post('absensi',[AbsenController::class,'store']);
