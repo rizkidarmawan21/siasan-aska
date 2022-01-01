@@ -116,6 +116,7 @@ class PerizinanController extends Controller
      */
     public function destroy(Perizinan $perizinan)
     {
+    
         $perizinan->delete();
         return redirect('/perizinan')->with('sukses', 'Data Perizinan berhasil dihapus');
     }

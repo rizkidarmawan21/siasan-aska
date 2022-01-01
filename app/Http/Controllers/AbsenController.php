@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use PDF;
 use App\Models\Absen;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 class AbsenController extends Controller
 {
 
@@ -23,7 +23,11 @@ class AbsenController extends Controller
      */
     public function index()
     {
-        //
+        $data = Absen::all();
+
+        return view('absensi.index',[
+            'absen' => $data
+        ]);
     }
 
     /**
@@ -33,7 +37,15 @@ class AbsenController extends Controller
      */
     public function create()
     {
-        //
+         $data = Absen::all();
+         $total = Absen::all()->count();
+         return view('absensi.print',[
+            'absen' => $data,
+            'total' => $total
+        ]);
+        // $pdf = PDF::loadView('absensi.print', ['absen'=> $data])->setPaper('f4', 'patroit');
+
+        // return $pdf->stream();
     }
 
     /**
@@ -110,8 +122,21 @@ class AbsenController extends Controller
      * @param  \App\Models\Absen  $absen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Absen $absen)
+    public function destroy(Absen $absensi)
     {
-        //
+
+        Storage::delete($absensi->foto);
+        $absensi->delete();
+        return redirect('/absensi')->with('sukses', 'Data Absensi berhasil dihapus');
+    }
+
+    public function print()
+    {
+        // $data = Absen::all();
+        // $pdf = PDF::loadView('perizinan.print.izin', ['data'=> $data])->setPaper('f4', 'patroit');
+
+        // return $pdf->stream();
+
+        echo "absen";
     }
 }

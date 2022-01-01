@@ -47,6 +47,7 @@
   <link rel="stylesheet" href="{{asset('adminlte/plugins/bs-stepper/css/bs-stepper.min.css')}}">
   <!-- dropzonejs -->
   <link rel="stylesheet" href="{{asset('adminlte/plugins/dropzone/min/dropzone.min.css')}}">
+  <link rel="stylesheet" href="{{asset('css/lightbox.css')}}">
 
 </head>
 
@@ -332,6 +333,7 @@
   // DropzoneJS Demo Code End
 </script>
 
+<script src="{{ asset('js/lightbox.js') }}"></script>
 
 
 </body>

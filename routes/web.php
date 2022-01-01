@@ -6,7 +6,7 @@ use App\Models\Perizinan;
 use App\Models\Jenjang;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AbsenController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,13 +44,19 @@ Route::get('/webcam', function () {
 
 Auth::routes();
 
-// Route::get('/webcam', [WebcamController::class, 'takeSnapshot']);	
+Route::get('/absen-muhasabah', function () {
+    return view('absensi.frond') ;
+    // echo 'coba';
+});
+
+
+// Route::get('/webcam', [WebcamController::class, 'takeSnapshot']);
 
 /////////////////////////////////////////////////////////////////////////////////
 Route::get('/getKamar', [SiswaController::class, 'getKamar']);
 Route::get('/getRuang', [SiswaController::class, 'getRuang']);
 
-// Route::get('/getdropdown', [DaftarOnlineController::class, 'getdropdown']);	
+// Route::get('/getdropdown', [DaftarOnlineController::class, 'getdropdown']);
 
 Route::get('/getMsKabupaten', [DaftarOnlineController::class, 'getMsKabupaten']);
 Route::get('/getMsKecamatan', [DaftarOnlineController::class, 'getMsKecamatan']);
@@ -501,6 +507,10 @@ Route::get('perizinan/{perizinan}/print_request',[PerizinanController::class,'pr
 Route::get('perizinan/{perizinan}/surat_izin',[PerizinanController::class,'printIzin'])->middleware('auth');
 
 
+
+
+
+
 /////////////// seragam //////////////////////////////////////////
 // Route::get('/seragam', [SeragamController::class, 'seragam']);
 // Route::post('/seragam/simpanseragam', [SeragamController::class, 'simpanseragam']);
@@ -524,10 +534,11 @@ Route::get('/total_uangkampus2', [RankingController::class, 'total_uangkampus2']
 Route::get('/total_uangkampus3', [RankingController::class, 'total_uangkampus3']);
 Route::get('/total_uangkampus4', [RankingController::class, 'total_uangkampus4']);
 
-Route::get('/absen-muhasabah', function () {
-    return view('absensi.frond') ;
-});
+
+Route::resource('absensi', AbsenController::class)->middleware('auth')->except('store');
+Route::post('/absensi',[AbsenController::class,'store']);
 
 
-Route::resource('/absensi', AbsenController::class)->middleware('auth')->except('store');
-Route::post('absensi',[AbsenController::class,'store']);
+
+
+
