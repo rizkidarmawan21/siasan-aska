@@ -58,7 +58,7 @@ class AbsenController extends Controller
     {
         // return $request->file('foto')->store('foto-absensi');
         $validatedData = $request->validate([
-            'name' => 'required|max:50',
+            'name' => 'required|max:50|unique:absens',
             'name_wali'  => 'required',
             'kelas' => 'required',
             'alamat' => 'required',
@@ -79,7 +79,7 @@ class AbsenController extends Controller
 
         Absen::create($validatedData);
 
-        return redirect('/absen-muhasabah')->with('success','Data absensi sudah terkirim ! ');
+        return redirect('/absen-success')->with('success','Data absensi sudah terkirim ! ');
     }
 
     /**

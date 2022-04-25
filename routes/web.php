@@ -47,7 +47,12 @@ Auth::routes();
 Route::get('/absen-muhasabah', function () {
     return view('absensi.frond') ;
     // echo 'coba';
+})->name('absen-muhasabah');
+Route::get('/absen-success', function () {
+    return view('absensi.success') ;
+    // echo 'coba';
 });
+
 
 
 // Route::get('/webcam', [WebcamController::class, 'takeSnapshot']);

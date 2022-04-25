@@ -60,7 +60,8 @@
             @endif
             <header class="bg-green"></header>
             <main class="bg-white text-center">
-                <h3>Absensi kehadiran muhasabah wali santri Askhabul Kahfi via daring </h3>
+                <h3>Absensi kehadiran <br> Ngaji Tafsir Alquran menjelang <br> hari raya Idul Fitri 1443H 
+                    </h3>
                 <p>By : Ponpes Askhabul Kahfi</p>
             </main>
         </div>
@@ -109,6 +110,9 @@
                                 {{ $message }}
                             </div>
                         @enderror
+                        <ul class="mt-2 text-sm">
+                            <li class="text-warning"><small>Ex : 10 TKJ2, 8A SMP, Salaf Imrity</small></li>
+                        </ul>
                     </div>
                 </div>
             </div>
