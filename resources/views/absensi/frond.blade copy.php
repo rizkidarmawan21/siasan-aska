@@ -60,7 +60,7 @@
             @endif
             <header class="bg-green"></header>
             <main class="bg-white text-center">
-                <h3>Absensi <br> Pembekalan Santri Baru 2022/2023 <br> Ponpes Askhabul Kahfi
+                <h3>Absensi kehadiran <br> Ngaji Tafsir Alquran menjelang <br> hari raya Idul Fitri 1443H 
                     </h3>
                 <p>By : Ponpes Askhabul Kahfi</p>
             </main>
@@ -99,6 +99,23 @@
                 </div>
             </div>
 
+            <div class="mx-auto col-md-7 my-3">
+                <div class="bg-white-radius">
+                    <div class="form-group">
+                        <label for="kelas">Kelas</label>
+                        <input type="text" class="form-control form-control-sm @error('kelas') is-invalid @enderror"
+                            value="{{ old('kelas') }}" name="kelas" placeholder="Masukkan kelas" id="kelas">
+                        @error('kelas')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        <ul class="mt-2 text-sm">
+                            <li class="text-warning"><small>Ex : 10 TKJ2, 8A SMP, Salaf Imrity</small></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <div class="mx-auto col-md-7 my-3">
                 <div class="bg-white-radius">
                     <div class="form-group">
