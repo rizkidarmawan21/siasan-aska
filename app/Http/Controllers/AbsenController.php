@@ -60,7 +60,7 @@ class AbsenController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:50|unique:absens',
             'name_wali'  => 'required',
-            // 'kelas' => 'required',
+            'kelas' => 'required',
             'alamat' => 'required',
             'foto' => 'required|image|file|max:1024',
         ],[
@@ -68,7 +68,7 @@ class AbsenController extends Controller
             'name.max' => 'Maksimal input 50 huruf !',
             'name.unique' => 'Nama santri sudah melakukan absen !',
             'name_wali.required' => 'Nama wali santri wajib diisi !',
-            // 'kelas.required' => 'Kelas wajib diisi !',
+            'kelas.required' => 'Jenjang wajib diisi !',
             'alamat.required' => 'Alamat wajib diisi !',
             'foto.required' => 'Foto wajib diisi !',
             'foto.image' => 'File harus berupa image JPG/PNG !',
@@ -77,7 +77,7 @@ class AbsenController extends Controller
         ]);
 
         $validatedData['foto'] = $request->file('foto')->store('foto-absensi');
-        $validatedData['kelas'] = "default";
+        // $validatedData['kelas'] = "default";
 
         Absen::create($validatedData);
 

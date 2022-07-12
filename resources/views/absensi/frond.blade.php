@@ -98,7 +98,32 @@
                     </div>
                 </div>
             </div>
-
+            <div class="mx-auto col-md-7 my-3">
+                <div class="bg-white-radius">
+                    <div class="form-group">
+                        <label for="kelas">Jenjang</label>
+                        {{-- <input type="text" class="form-control form-control-sm @error('kelas') is-invalid @enderror"
+                            value="{{ old('kelas') }}" name="kelas" placeholder="Masukkan kelas" id="kelas"> --}}
+                            <select name="kelas" id="kelas" class="form-control form-control-sm @error('kelas') is-invalid @enderror"
+                            value="{{ old('kelas') }}">
+                                <option disabled selected>--Pilih Jenjang--</option>
+                                <option value="SMP 1">SMP 1</option>
+                                <option value="SMP 2">SMP 2</option>
+                                <option value="SMK">SMK</option>
+                                <option value="MTS">MTS</option>
+                                <option value="MA">MA</option>
+                            </select>
+                        @error('kelas')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        {{-- <ul class="mt-2 text-sm">
+                            <li class="text-warning"><small>Ex : 10 TKJ2, 8A SMP, Salaf Imrity</small></li>
+                        </ul> --}}
+                    </div>
+                </div>
+            </div>
             <div class="mx-auto col-md-7 my-3">
                 <div class="bg-white-radius">
                     <div class="form-group">
