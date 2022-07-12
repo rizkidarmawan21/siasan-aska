@@ -46,7 +46,7 @@
 
     </style>
 
-    <title>Absensi Muhasabah</title>
+    <title>Absensi Pembekalan Santri Baru 2022</title>
 </head>
 
 <body>
